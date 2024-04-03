@@ -9,12 +9,12 @@ export class CompanyService {
             });
             return newCompany;
         } catch (error) {
-            return error
+            return error;
         }
     };
 
     async getAllCompanies() {
-        const allCompanies = await CompanyEntity.findAll()
+        const allCompanies = await CompanyEntity.findAll();
         return allCompanies;
     };
 }
