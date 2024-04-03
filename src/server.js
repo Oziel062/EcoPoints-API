@@ -1,15 +1,18 @@
 import express from "express";
-import { infoRoute } from "./routes/infoRecicleRoutes.js";
-import { companyRoute } from "./routes/companyRecycleRoutes.js";
-
-const server = express();
-const port = 4000;
+import { testConnection } from "./database/connection.js";
+import { routers } from "./routes/index.routes.js";
+import cors from "cors";
 
 
-server.use(express.json());
-server.use(infoRoute);
-server.use(companyRoute);
+export const app = express()
+const port = 3000
+app.use(express.json())
+app.use(cors({
+    origin: ""
+}))
+app.use(routers)
 
-server.listen(port, () => {
-    console.log(`Api - Planeta Limpo rodando na porta ${port}🌲🌎`)
-});
+app.listen(port, () => {
+    testConnection()
+    console.log(`Servidor rodando na porta ${port}`)
+})
