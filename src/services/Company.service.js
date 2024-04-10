@@ -14,7 +14,18 @@ export class CompanyService {
     };
 
     async getAllCompanies() {
-        const allCompanies = await CompanyEntity.findAll();
-        return allCompanies;
+        const companies = await CompanyEntity.findAll();
+        return companies;
     };
+
+
+    async getCompanyByState(state) {
+
+        const companiesByState = await CompanyEntity.findAll({
+            where: {
+                state
+            }
+        })
+        return companiesByState
+    }
 }

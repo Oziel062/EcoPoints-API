@@ -1,4 +1,3 @@
-import { CompanyEntity } from "../entities/Company.Entity.js";
 import { CompanyService } from "../services/Company.service.js"
 import { SUCESS } from "../shared/messages.js";
 
@@ -13,6 +12,12 @@ export async function createCompany(req, res) {
 };
 
 export async function getAllCompanies(req, res) {
-    const allCompanies = await instanceCompanyService.getAllCompanies();
-    res.status(200).json({ allCompanies })
+    const companies = await instanceCompanyService.getAllCompanies();
+    res.status(200).json({ companies })
+}
+
+export async function getCompaniesByState(req,res){
+    const {state} = req.params
+    const companyStates = await instanceCompanyService.getCompanyByState(state);
+    res.status(200).json(companyStates)
 }
