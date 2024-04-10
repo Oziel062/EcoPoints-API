@@ -18,6 +18,6 @@ export async function getAllCompanies(req, res) {
 
 export async function getCompaniesByState(req,res){
     const {state} = req.params
-    const companyStates = await instanceCompanyService.getCompanyByState(state);
-    res.status(200).json(companyStates)
+    const companies = await instanceCompanyService.getCompanyByState(state);
+    res.status(200).json({companies})
 }
